@@ -3,7 +3,7 @@ import './App.css'
 
 import AgregarUsuario from './AgregarUsuario'
 import EditarUsuario from './EditarUsuario'
-import ListaUsuarios from './ListaUsuario'
+import ListaUsuario from './ListaUsuario'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -38,7 +38,7 @@ function App() {
         <BrowserRouter>
         
           <Routes>
-            <Route path='/' element={<ListaUsuarios />} exact></Route>
+            <Route path='/' element={<ListaUsuario />} exact></Route>
             <Route path='/agregar-usuario' element={<AgregarUsuario />} exact></Route>
             <Route path='/editar-usuario' element={<EditarUsuario />} exact></Route>
           </Routes>

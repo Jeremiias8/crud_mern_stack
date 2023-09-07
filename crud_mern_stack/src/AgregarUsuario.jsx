@@ -19,11 +19,11 @@ function AgregarUsuario() {
 
         console.log(usuario);
 
-        axios.post('/api/usuario/agregar-usuario', usuario)
+        axios.post('api/usuario/agregar-usuario', usuario)
             .then(res => {
                 alert(res.data)
             })
-            .then(err => { console.log(err) })
+            .catch(err => { console.log(err) })
     }
 
     return(
