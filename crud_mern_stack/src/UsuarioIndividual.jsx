@@ -1,6 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function UsuarioIndividual({usuario}) {
+function UsuarioIndividual() {
+  
+    const usuario = (props) => {
+        return <div>{props}</div> 
+    }
 
     return(
         <div className='container'>
@@ -24,7 +29,10 @@ function UsuarioIndividual({usuario}) {
                         </li>
                     </ul>
 
-                    <button className="btn btn-info">Editar</button>
+                    {/* <Link to={`/editar-usuario/${usuario.idusuario}`}><li className='btn btn-success'>Editar</li></Link>
+                    */}
+
+                    <Link to={`/editar-usuario/${usuario.idusuario}`}><li className="btn btn-success">Editar</li></Link>
                     &nbsp;
                     <button className="btn btn-danger">Borrar</button>
 

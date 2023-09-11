@@ -6,7 +6,7 @@ import AgregarUsuario from './AgregarUsuario'
 import EditarUsuario from './EditarUsuario'
 import ListaUsuario from './ListaUsuario'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 const baseURL = "https://jsonplaceholder.typicode.com/posts/1";
 // const baseURL2 = "https://jsonplaceholder.typicode.com/posts";
@@ -23,6 +23,8 @@ function App() {
   }, []);
 
   if (!post) return null; 
+
+  // function guardarPost() {}
 
   // método post
   /* const [post, setPost] = React.useState(null);
@@ -76,7 +78,7 @@ function App() {
           <Routes>
             <Route path='/' element={<ListaUsuario />} exact></Route>
             <Route path='/agregar-usuario' element={<AgregarUsuario />} exact></Route>
-            <Route path='/editar-usuario' element={<EditarUsuario />} exact></Route>
+            <Route path='/editar-usuario/:idusuario' element={<EditarUsuario />} exact></Route>
           </Routes>
 
         </BrowserRouter>
@@ -84,8 +86,21 @@ function App() {
 
         <div className="container-fluid mt-4 mb-4 p-2 bg-body-secondary">
           <code>Método GET con Axios</code>
+
+          <input type="text" className="form-control m-2" value={post} onChange={setPost} />
+
+          <div className="mt-3 mb-3">
+            <span>User Id: {post.userId}</span>
+            &nbsp;
+            <span>Id Post: {post.id}</span>
+          </div>
+          
           <h3>{post.title}</h3>
           <p>{post.body}</p>
+          
+          <button className="btn btn-primary m-2">Añadir Post</button>
+          <Link to='/editar-usuario'><button className="btn btn-info m-2">Editar Post</button></Link> 
+          <button className="btn btn-danger m-2">Borrar Post</button>
         </div>
 
         <div className="container-fluid mt-4 mb-4 p-2 bg-body-secondary">
@@ -93,7 +108,7 @@ function App() {
           <h3>{}</h3>
           <p>{}</p>
 
-          <button className="btn btn-primary">Crear Post</button>
+          <button className="btn btn-secondary">Crear Post</button>
         </div>
 
         <p className="read-the-docs">
