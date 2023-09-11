@@ -54,7 +54,7 @@ function App() {
 
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container">
-            <a className="navbar-brand" href="#">CRUD MERN Stack - Jere</a>
+            <a className="navbar-brand" href="/">CRUD MERN Stack - Jere</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -99,7 +99,7 @@ function App() {
           <p>{post.body}</p>
           
           <button className="btn btn-primary m-2">Añadir Post</button>
-          <Link to='/editar-usuario'><button className="btn btn-info m-2">Editar Post</button></Link> 
+          <Link to='/editar-usuario/${usuario.idusuario}'><button className="btn btn-info m-2">Editar Post</button></Link> 
           <button className="btn btn-danger m-2">Borrar Post</button>
         </div>
 

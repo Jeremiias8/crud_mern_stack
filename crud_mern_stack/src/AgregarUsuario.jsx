@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function AgregarUsuario() {
 
@@ -21,7 +22,8 @@ function AgregarUsuario() {
 
         axios.post('api/usuario/agregar-usuario', usuario)
             .then(res => {
-                alert(res.data)
+                // alert(res.data)
+                Swal.fire('Felicidades', 'El usuario se creó con éxito');
             })
             .catch(err => { console.log(err) })
     }

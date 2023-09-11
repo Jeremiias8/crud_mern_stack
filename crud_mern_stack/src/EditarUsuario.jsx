@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function EditarUsuario() {
 
@@ -8,24 +9,48 @@ function EditarUsuario() {
 
     /* const = [edit, setEdit] = React.useState(null);
     */
+
+    const params = useParams();
+
     const [nombre, setNombre] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [telefono, setTelefono] = React.useState('');
 
-    const params = useParams();
-
     React.useEffect(() => {
-        axios.post('/api/usuario/obtenerdatausuario', {idusuario: params.idusuario})
+        axios.post('/api/usuario/obtener-datausuario', {idusuario: params.idusuario})
             .then(res => {
                 console.log(res.data[0])
                 
                 const datausuario = res.data[0];
                 setNombre(datausuario.nombre);
+                setEmail(datausuario.email);
+                setTelefono(datausuario.telefono);
             })
-    }, []);
- 
-    function actualizarUsuario() {
+    }, [params.idusuario]);
 
+    // return to index
+    const navegar = useNavigate();
+
+    // update function
+    function editarUsuario() {
+        // new obj
+        const actualizarusuario = {
+            nombre: nombre,
+            email: email ,
+            telefono: telefono,
+            idusuario: params.idusuario
+        }
+
+        // request with axios
+        axios.post('api/usuario/actualizar-usuario', actualizarusuario)
+            .then(res => {
+                console.log(res.data);
+                alert(res.data);
+                navegar('');
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     return(
@@ -57,7 +82,7 @@ function EditarUsuario() {
 
                     </div>
 
-                    <button onClick={actualizarUsuario} className="btn btn-success mb-3">Actualizar Usuario</button>
+                    <button onClick={editarUsuario} className="btn btn-success mb-3">Editar Usuario</button>
                 </div>
 
             </div>
