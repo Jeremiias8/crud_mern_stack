@@ -1,10 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
 import UsuarioIndividual from './UsuarioIndividual';
-import axios from 'axios';
+// import axios from 'axios';
 
 function ListaUsuario() {
 
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(null);
+    const [items, setItems] = useState(null);
+
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/posts/1")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setItems(result);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }, [])
+
+    /*
     const[dataUsuarios, setDataUsuarios] = useState([]);
 
     useEffect(() => {
@@ -18,8 +38,10 @@ function ListaUsuario() {
                 console.log(err);
             })
        
-    }, [])
+    }, []) */
 
+
+    /*
     // mapear lista de users en obj user
     const listausuarios = dataUsuarios.map(usuario => {
         return(
@@ -29,15 +51,28 @@ function ListaUsuario() {
                 </div>
             </>
         )
-    })
+    }) */
 
-    return(
-        <div>
-            <h2>Lista de usuarios</h2>
+    
 
-            {listausuarios}
-        </div>
-    );
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div>Loading...</div>
+    } else {
+        return (
+            <ul>
+                {items.map(item => (
+                    <li key={item.id}>
+                        {item.id} {item.title}
+                    </li>
+                ))}
+                <li>
+                    <UsuarioIndividual />
+                </li>
+            </ul>
+        );
+    }
 }
 
 export default ListaUsuario
