@@ -71,7 +71,7 @@ function App() {
     </div>
         </nav>
 
-  <h1>WELCOME !</h1>
+  <h1>Welcome !</h1>
 
         <BrowserRouter>
         
@@ -111,9 +111,6 @@ function App() {
           <button className="btn btn-secondary">Crear Post</button>
         </div>
 
-        <p className="read-the-docs">
-          Practising with React due to it is so much used it.
-        </p>
       </div>
     </>
   )

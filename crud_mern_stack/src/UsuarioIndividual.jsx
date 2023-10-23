@@ -58,8 +58,10 @@ function UsuarioIndividual() {
 
 
                     <Link to={`/editar-usuario/${usuario.idusuario}`}><li className="btn btn-success">Editar</li></Link>
+                    
                     &nbsp;
-                    <button className="btn btn-danger" onClick={() => {borrarUsuario(usuario.idusuario)}}>Borrar</button>
+
+                    <button className="btn btn-danger" onClick={() => { borrarUsuario(usuario.idusuario)}}>Borrar</button>
 
                     <hr className="mt-4" />
 
