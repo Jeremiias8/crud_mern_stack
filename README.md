@@ -1,2 +1,2 @@
 # crud_react
-CRUD con React - cd crud_mern_stack && npm run dev
+CRUD desarrollado con el MERN Stack - cd crud_mern_stack && npm run dev
